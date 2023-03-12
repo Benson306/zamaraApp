@@ -28,8 +28,8 @@ const Styles = StyleSheet.create({
         fontSize:20,
         color:'white',
         marginTop:20,
-        borderRadius: 10,
-        borderWidth:1,
+        borderRadius: 5,
+        borderBottomWidth:1,
         borderColor: 'white'
     },
     loginButton:{
