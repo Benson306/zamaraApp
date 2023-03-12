@@ -9,7 +9,6 @@ export const AuthProvder = ({children}) =>{
     const [userData, setUserData] = useState({})
 
     const login = (res) =>{
-
         setIsLoading(true);
         setUserToken(res.token);
         setUserData(res);
@@ -38,7 +37,6 @@ export const AuthProvder = ({children}) =>{
                 setUserToken(token);
                 setUserData(userInfo);
             }
-            
             setIsLoading(false);
 
         } catch(e){
@@ -46,7 +44,6 @@ export const AuthProvder = ({children}) =>{
         }
         
     }
-
     useEffect(()=>{
         isLoggedIn();
     },[])

@@ -54,6 +54,22 @@ const Styles = StyleSheet.create({
         color: 'yellow',
         paddingTop: 5,
         textTransform: 'capitalize'
+    },
+    inputContainer: {
+        borderBottomWidth:1,
+        borderBottomColor:'#fff',
+        borderRadius: 5,
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    textInputAlt:{
+        width: 260,
+        padding: 10,
+        fontSize:20,
+        color:'white',
+        marginTop:20,
+        borderRadius: 5,
+        borderColor: 'white'
     }
 })
 
