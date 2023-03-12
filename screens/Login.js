@@ -1,14 +1,42 @@
 import { Formik } from "formik";
 import React from "react";
-import { Text, View , TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard } from 'react-native'
+import { Text, View , TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import Styles from "../styles/Styles";
+import * as yup from 'yup'
 
 
+    const loginSchema = yup.object({
+        username: yup.string()
+                    .required()
+                    .min(3),
+        password: yup.string().required().min(4)
+
+    })
 export default Login = () =>{
-
-    const handleSubmit = () =>{
-       
+    const handleSubmit = (values) =>{
+        fetch('https://dummyjson.com/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                
+                username: values.username,
+                password: values.password
+            })
+            })
+            .then(res => res.json())
+            .then((res) => {
+                Object.hasOwn(res, 'message') 
+                    ? 
+                Alert.alert('Oops!','Invalid Credentials', [
+                    {text:'dismiss', onPress: () =>{}}
+                ])
+                    : 
+                Alert.alert('Success','Logged In', [
+                    {text:'proceed', onPress: () =>{}}
+                ])
+            });
     }
+        
     return  (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View style={Styles.login}>
@@ -18,6 +46,11 @@ export default Login = () =>{
             
             <Formik
                 initialValues={{username:'', password:''}}
+                validationSchema={loginSchema}
+                onSubmit={(values, actions)=>{
+                    handleSubmit(values)
+                    actions.resetForm();
+                }}
             >
               {(props) =>(
                 <View>
@@ -26,7 +59,11 @@ export default Login = () =>{
                         placeholder="Username"
                         value={props.values.username}
                         onChangeText={props.handleChange('username')}
+                        blurOnSubmit={true}
+                        onBlur={props.handleBlur('username')}
+                        autoCorrect={false}
                     />
+                    <Text style={Styles.errorText}>{props.touched.username && props.errors.username}</Text>
                     <TextInput 
                         style={Styles.textInput}
                         placeholder="Password"
@@ -34,9 +71,11 @@ export default Login = () =>{
                         onChangeText={props.handleChange('password')}
                         secureTextEntry={true}
                         autoCorrect={false}
+                        onBlur={props.handleBlur('password')}
                     />
+                    <Text style={Styles.errorText}>{props.touched.password && props.errors.password}</Text>
 
-                    <TouchableOpacity style={Styles.loginButton} onPress={handleSubmit}>
+                    <TouchableOpacity style={Styles.loginButton} onPress={props.handleSubmit}>
                         <Text style={Styles.loginText}>Login</Text>
                     </TouchableOpacity>
                     

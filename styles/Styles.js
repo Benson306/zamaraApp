@@ -27,7 +27,7 @@ const Styles = StyleSheet.create({
         padding: 10,
         fontSize:20,
         color:'white',
-        marginTop:30,
+        marginTop:20,
         borderRadius: 10,
         borderWidth:1,
         borderColor: 'white'
@@ -49,6 +49,11 @@ const Styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: '#009999',
+    },
+    errorText:{
+        color: 'yellow',
+        paddingTop: 5,
+        textTransform: 'capitalize'
     }
 })
 
