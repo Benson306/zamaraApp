@@ -5,12 +5,8 @@ export default function Home({navigation}){
     return (
         <View>
             <Text>
-                Home
+                123
             </Text>
-            <Button
-                title="Go to Staff"
-                onPress={() => navigation.navigate('Staff')}
-                />
         </View>
     )
 }

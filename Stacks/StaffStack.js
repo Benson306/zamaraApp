@@ -1,16 +1,16 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Login from "../screens/Login";
+import Staff from "../screens/Staff";
 
 const Stack = createNativeStackNavigator();
 
-export default function AuthStack(){
+export default function StaffStack(){
 
     return (
-        <Stack.Navigator initialRouteName='Login'>
+        <Stack.Navigator initialRouteName='Staff'>
                 <Stack.Screen 
-                name="Login" 
-                component={Login} 
+                name="Staff" 
+                component={Staff} 
                 options={{headerShown: false}}
                 />
       </Stack.Navigator> 

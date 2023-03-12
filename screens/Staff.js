@@ -8,10 +8,6 @@ export default function Staff({navigation}){
             <Text>
                 Staff
             </Text>
-            <Button
-                title="Go to Home"
-                onPress={() => navigation.navigate('Home')}
-                />
         </View>
     )
 }
