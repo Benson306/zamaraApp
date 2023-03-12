@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { SafeAreaView, StyleSheet, Image, Text } from 'react-native';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AuthContext } from '../context/AuthContext';
 
 const CustomSidebarMenu = (props) => {
-
+  const {logout} = useContext(AuthContext);
   return (
     <SafeAreaView style={{flex: 1}}>
       {/*Top Large Image */}
@@ -17,7 +18,7 @@ const CustomSidebarMenu = (props) => {
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
 
-      <TouchableOpacity style={styles.signOut}>
+      <TouchableOpacity style={styles.signOut} onPress={()=>{logout()}}>
         <Text style={styles.signOutText}>Sign Out</Text>
       </TouchableOpacity>
 

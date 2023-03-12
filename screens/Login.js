@@ -1,8 +1,9 @@
 import { Formik } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import { Text, View , TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert } from 'react-native'
 import Styles from "../styles/Styles";
 import * as yup from 'yup'
+import { AuthContext } from "../context/AuthContext";
 
 
     const loginSchema = yup.object({
@@ -13,7 +14,9 @@ import * as yup from 'yup'
 
     })
 export default Login = ({ navigation }) =>{
-    const handleSubmit = (values) =>{
+    const {login} = useContext(AuthContext)
+
+    const handleSubmit = (values, actions) =>{
         fetch('https://dummyjson.com/auth/login', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -25,20 +28,22 @@ export default Login = ({ navigation }) =>{
             })
             .then(res => res.json())
             .then((res) => {
-                Object.hasOwn(res, 'message') 
-                    ? 
-                Alert.alert('Oops!','Invalid Credentials', [
-                    {text:'dismiss', onPress: () =>{}}
-                ])
-                    : 
-                Alert.alert('Success','Logged In', [
-                    {text:'proceed', onPress: () =>{}}
-                ])
+
+                if(Object.hasOwn(res, 'message')){
+                    Alert.alert('Oops!','Invalid Credentials', [
+                        {text:'dismiss', onPress: () =>{}}
+                    ])
+                }else{
+                    login(res);
+                }
+                
+                actions.resetForm();
             });
     }
         
     return  (
         <View style={Styles.container}>
+            
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={Styles.login}>
                 
@@ -49,9 +54,7 @@ export default Login = ({ navigation }) =>{
                     initialValues={{username:'', password:''}}
                     validationSchema={loginSchema}
                     onSubmit={(values, actions)=>{
-                        // handleSubmit(values)
-                        // actions.resetForm();
-                        navigation.navigate('Home')
+                        handleSubmit(values, actions)
                     }}
                 >
                 {(props) =>(
