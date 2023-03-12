@@ -30,7 +30,7 @@ const Styles = StyleSheet.create({
         marginTop:20,
         borderRadius: 5,
         borderBottomWidth:1,
-        borderColor: 'white'
+        borderColor: 'white',
     },
     loginButton:{
         marginTop: 30,
@@ -68,7 +68,6 @@ const Styles = StyleSheet.create({
         fontSize:20,
         color:'white',
         marginTop:20,
-        borderRadius: 5,
         borderColor: 'white'
     }
 })

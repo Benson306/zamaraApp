@@ -87,7 +87,7 @@ export default Login = ({ navigation }) =>{
                                 onBlur={props.handleBlur('password')}
                             />
                             <Pressable onPress={handlePasswordVisibility}>
-                            <MaterialCommunityIcons name={rightIcon} size={24} color="black" />
+                            <MaterialCommunityIcons name={rightIcon} size={24} color="black" style={{marginTop:25}}/>
                             </Pressable>
                         </View>
 
