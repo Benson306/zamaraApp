@@ -40,10 +40,16 @@ export default function Preview({route, navigation}) {
         <Text style={styles.body}>{salary}</Text>
 
         <View style={{marginTop:40, flexDirection:'row', justifyContent:'space-around'}}>
-            <TouchableOpacity style={{backgroundColor:'#009999', padding: 10, borderRadius:8, width:80, alignItems:'center'}}>
+            <TouchableOpacity 
+                style={{backgroundColor:'#009999', padding: 10, borderRadius:8, width:80, alignItems:'center'}} 
+                onPress={() => navigation.navigate('Update', route.params)}
+            >
                 <Text style={{color:'white', fontSize: 16}}>Edit</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={{backgroundColor:'red', padding: 10, borderRadius:8, width:80, alignItems:'center'}} onPress={()=>handleDelete()}>
+            <TouchableOpacity 
+                style={{backgroundColor:'red', padding: 10, borderRadius:8, width:80, alignItems:'center'}} 
+                onPress={()=>handleDelete()}
+            >
                 <Text style={{color:'white', fontSize: 16}}>Delete</Text>
             </TouchableOpacity>
         </View>
