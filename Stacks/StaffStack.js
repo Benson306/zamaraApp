@@ -1,6 +1,8 @@
 import React from "react";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Staff from "../screens/Staff";
+import AddStaff from "../screens/AddStaff";
+import Preview from '../screens/Preview';
 
 const Stack = createNativeStackNavigator();
 
@@ -11,6 +13,16 @@ export default function StaffStack(){
                 <Stack.Screen 
                 name="Staff" 
                 component={Staff} 
+                options={{headerShown: false}}
+                />
+                <Stack.Screen
+                name="AddStaff"
+                component={AddStaff}
+                options={{headerShown: false}}
+                />
+                <Stack.Screen 
+                name="Preview" 
+                component={Preview} 
                 options={{headerShown: false}}
                 />
                 

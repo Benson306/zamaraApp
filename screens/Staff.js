@@ -1,133 +1,82 @@
+import { useFocusEffect } from "@react-navigation/native";
 import { Formik } from "formik";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } from "react-native";
-import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
-import * as yup from 'yup';
+import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+import Card from "../utility/Card";
 
-    export const staffSchema = yup.object({
-        staffNumber: yup.string().required().min(3),
-        staffName: yup.string().required().min(3),
-        staffEmail: yup.string().required().min(3),
-        department: yup.string().required().min(1),
-        salary: yup.number().required().min(1)
-    })
+
 
 export default function Staff({navigation}){
         const [loading, setLoading] = useState(false);
 
-        const handleSubmit = (values, actions) =>{
-                setLoading(true);
+        const [data, setData] = useState([]);
 
-            fetch('https://crudcrud.com/api/bd152d16870c4e3b8635b43060fe76ad/resource', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(values)
-                })
+        useFocusEffect(
+            React.useCallback(() => {
+                fetch('https://crudcrud.com/api/15fafef46fa247c7b0ee6160b32fc394/zamara')
                 .then(res => res.json())
                 .then((res) => {
-                    console.log(res);
-                    Alert.alert('Success','Staff Added', [
-                        {text:'okay', onPress: () =>{}}
-                    ])
+                    setData(res)
                     setLoading(false);
-                    actions.resetForm();
-                });
-                
-        }
+                })
+                .catch(err =>{
+                    setLoading(false);
+                })
+            }, [])
+          );
 
-   
-    return (
-        <View>
-        {
-           !loading ? 
+
+        const handleNav= ()=>{
+                navigation.navigate('AddStaff')
+        }
             
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <View>
-                    <Formik 
-                        initialValues={{staffNumber: '', staffName:'', staffEmail:'', department:'', salary:0}}
-                        validationSchema={staffSchema}   
-                        onSubmit={((values, actions)=>{
-                            Keyboard.dismiss();
-                            handleSubmit(values, actions);
-                        })}
-                    >
-                        {(props)=>(
-                            <View style={styles.container}>
+    return (
+        <View style={styles.container}>
+             <View style={{padding:10}}>
+                <TouchableOpacity onPress={handleNav} style={styles.button}>
+                    <Text style={styles.buttonText}>Add New Staff</Text>
+                </TouchableOpacity>
+            </View>
+            
+            
+            <View style={styles.content}>
+                <Text style={styles.contentHeading}>Staff List</Text>
+                <Text>List of All Staff Members</Text>
 
-                                <Text style={{fontSize:20, fontWeight:'bold', marginBottom:30, color:'black'}}>Add Staff Details</Text>
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Staff Number"
-                                    value={props.values.staffNumber}
-                                    onChangeText={props.handleChange('staffNumber')}
-                                    blurOnSubmit={true}
-                                    onBlur={props.handleBlur('staffNumber')}
-                                    autoCorrect={false}
-                                /> 
-                                <Text style={styles.errorText}>{props.touched.staffNumber && props.errors.staffNumber}</Text>
-
-                                <TextInput 
-                                    style={styles.input}
-                                    placeholder="Staff Name"
-                                    value={props.values.staffName}
-                                    onChangeText={props.handleChange('staffName')}
-                                    blurOnSubmit={true}
-                                    onBlur={props.handleBlur('staffName')}
-                                    autoCorrect={false}
-                                /> 
-                                <Text style={styles.errorText}>{props.touched.staffName && props.errors.staffName}</Text>
-
-                                <TextInput 
-                                    style={styles.input}
-                                    placeholder="Staff Email"
-                                    value={props.values.staffEmail}
-                                    onChangeText={props.handleChange('staffEmail')}
-                                    blurOnSubmit={true}
-                                    onBlur={props.handleBlur('staffEmail')}
-                                    autoCorrect={false}
-                                />
-                                <Text style={styles.errorText}>{props.touched.staffEmail && props.errors.staffEmail}</Text>
-
-                                <TextInput 
-                                    style={styles.input}
-                                    placeholder="Department"
-                                    value={props.values.department}
-                                    onChangeText={props.handleChange('department')}
-                                    blurOnSubmit={true}
-                                    onBlur={props.handleBlur('department')}
-                                    autoCorrect={false}
-                                /> 
-                                <Text style={styles.errorText}>{props.touched.department && props.errors.department}</Text>
-
-                                <TextInput
-                                    keyboardType="numeric" 
-                                    style={styles.input} 
-                                    placeholder="Salary"
-                                    value={props.values.salary}
-                                    onChangeText={props.handleChange('salary')}
-                                    blurOnSubmit={true}
-                                    onBlur={props.handleBlur('salary')}
-                                    autoCorrect={false}
-                                />
-                                <Text style={styles.errorText}>{props.touched.salary && props.errors.salary}</Text>
-
-
-                                <TouchableOpacity style={styles.button} onPress={props.handleSubmit}>
-                                    <Text style={styles.buttonText}>Submit</Text>
-                                </TouchableOpacity>
-                            </View>
-                        )}
-                            
-
-                    </Formik>
-                </View>
-                </TouchableWithoutFeedback>
-            :
-            <View style={{flex:1, justifyContent:'center', alignItems:'center', marginTop:30 }}>
+                {
+                loading ? 
+                
+                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
                     <ActivityIndicator size='large'  color="#009999"/>
-            </View> 
+                </View> 
+                
+                :
+                <FlatList 
+                    style={{marginTop:20}}
+                    data={data}
+                    renderItem={({ item })=>(
+                        <TouchableOpacity style={{marginTop:10}} onPress={()=>{navigation.navigate('Preview', item)}}>
+                            <Card>
+                                <View style={{flexDirection:'row'}}>
+                                <View style={{width:250}}>
+                                    <Text style={styles.name}>{item.staffName}</Text>
+                                    <Text style={styles.email}>{item.staffEmail}</Text>
+                                    <Text style={styles.email}>{item.department}</Text>
+                                </View>
+                                <View style={{alignContent:'center', justifyContent:'center'}}>
+                                    <Text style={{fontSize:25, color:'#009999'}}>{'>'}</Text>
+                                </View>
+                                </View>
+                            </Card>
+                        </TouchableOpacity>
+                    )}
+                />
+                } 
 
-        }
+                </View>
+                          
+
         </View>
         
     )
@@ -135,31 +84,45 @@ export default function Staff({navigation}){
 
 const styles = StyleSheet.create({
     container:{
-        padding: 20,
-        alignItems:'center'
+        padding:0,
+        flexDirection:'column'
     },
-    input:{
-        borderBottomWidth:1,
-        marginBottom:5,
-        width: 300,
-        fontSize:18
+    search:{
+        width:200,
+        borderWidth:1,
+        borderRadius:10,
+        marginRight:5,
+        padding:5,
+        marginTop:10,
+        alignSelf:'flex-end'
     },
     button:{
         backgroundColor:'#009999',
-        padding: 15,
-        width:200,
+        width:150,
+        padding:15,
         alignItems:'center',
-        borderRadius:8,
-        marginTop:30
-    }, 
-    buttonText:{
-        color:'white',
-        fontSize:15,
+        alignSelf:'flex-end',
+        borderRadius:10
     },
-    errorText:{
-        color:'red',
-        marginBottom:10,
-        alignSelf:'flex-start',
-        marginLeft:10
+    buttonText:{
+        color:'white'
+    },
+    content:{
+        flexDirection:'column',
+        backgroundColor: '#b3b3b3',
+        padding:20,
+        height:'100%'
+    },
+    contentHeading:{
+        color:'black',
+        fontSize:30,
+        fontWeight:'bold'
+    },
+    name:{
+        fontSize: 20,
+        color:'#009999'
+    },
+    email:{
+        color:'gray'
     }
 })

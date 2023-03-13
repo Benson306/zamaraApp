@@ -1,5 +1,6 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import React from "react";
+import ContinentsStack from "./ContinentsStack";
 import CustomSidebarMenu from "./CustomDrawer";
 import HomeStack from "./HomeStack";
 import StaffStack from "./StaffStack";
@@ -25,6 +26,7 @@ export default function DrawerStack(){
             
             />
             <Drawer.Screen name="STAFF" component={StaffStack} />
+            <Drawer.Screen name="CONTINENTS" component={ContinentsStack} />
         </Drawer.Navigator>
     )
 }
