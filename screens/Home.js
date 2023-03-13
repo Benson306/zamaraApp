@@ -23,7 +23,7 @@ export default function Home({navigation}){
         
     },[])
     return (
-        <View>
+        <View style={{backgroundColor:'#009999'}}>
             {
                 loading ? 
                 <View style={{flex:1, justifyContent:'center', alignItems:'center', marginTop:30 }}>
@@ -36,13 +36,14 @@ export default function Home({navigation}){
                         
                         <Image source={{uri: data.image}} style={{width: 100, height: 100, borderRadius: 100 / 2, alignSelf: 'center',marginTop:5, alignSelf:'center'}}/>
                         <Text style={styles.welcome}>
-                            Welcome, <Text style={{color:'yellow'}}>{data.firstName} {data.lastName}</Text>
+                            Welcome, <Text style={{color:'purple'}}>{data.firstName} {data.lastName}</Text>
                         </Text>
+                        
+                    </View>
+                    <View style={styles.wrapper}>
                         <Text style={styles.text}>
                             Your profile details is as below:
                         </Text>
-                    </View>
-                    <View style={styles.wrapper}>
                         <View style={styles.flex}>
                             <View style={styles.row1}>
                                 <Text style={styles.header}>
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     home:{
         justifyContent:'space-between',
         backgroundColor:'#009999',
-        padding:20
+        padding:20,
     },
     welcome: {
         fontSize: 22,
@@ -145,19 +146,29 @@ const styles = StyleSheet.create({
     },
     text:{
         marginTop:20,
-        fontSize:15,
-        alignSelf:'center'
+        fontSize:17,
+        alignSelf:'center',
+        color:'black',
+        fontWeight: 'bold'
     },
     wrapper:{
+        marginHorizontal:4,
+        height:'100%',
         paddingHorizontal:30,
+        backgroundColor:'white',
+        borderTopLeftRadius:25,
+        borderTopRightRadius:25,
+        borderBottomLeftRadius:5,
+        borderBottomRightRadius:5,
     },
     header:{
         marginTop:10,
         fontSize: 15,
-        color:'gray'
+        color:'#009999'
     }, 
     body:{
-        fontSize: 20
+        fontSize: 20,
+        color:'gray'
     },
     flex:{
         flexDirection: 'row',
