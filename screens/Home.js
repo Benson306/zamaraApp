@@ -34,7 +34,7 @@ export default function Home({navigation}){
                 <View>
                     <View style={styles.home}>
                         
-                        <Image source={{uri: data.image}} style={{width:100, height:100, alignSelf:'center'}}/>
+                        <Image source={{uri: data.image}} style={{width: 100, height: 100, borderRadius: 100 / 2, alignSelf: 'center',marginTop:5, alignSelf:'center'}}/>
                         <Text style={styles.welcome}>
                             Welcome, <Text style={{color:'yellow'}}>{data.firstName} {data.lastName}</Text>
                         </Text>
