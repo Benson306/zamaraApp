@@ -33,16 +33,16 @@ export default function Staff({navigation}){
             
     return (
         <View style={styles.container}>
-             <View style={{padding:10}}>
+            <View style={{padding:10}}>
                 <TouchableOpacity onPress={handleNav} style={styles.button}>
-                    <Text style={styles.buttonText}>Add New Staff</Text>
+                    <Text style={styles.buttonText}><Text style={{fontSize:16}}>+</Text>   Add New Staff</Text>
                 </TouchableOpacity>
             </View>
             
             
             <View style={styles.content}>
                 <Text style={styles.contentHeading}>Staff List</Text>
-                <Text>List of All Staff Members</Text>
+                <Text style={{alignSelf:'center'}}>List of All Staff Members</Text>
 
                 {
                 loading ? 
@@ -75,6 +75,7 @@ export default function Staff({navigation}){
                 } 
 
                 </View>
+                
                           
 
         </View>
@@ -85,7 +86,8 @@ export default function Staff({navigation}){
 const styles = StyleSheet.create({
     container:{
         padding:0,
-        flexDirection:'column'
+        flexDirection:'column',
+        backgroundColor:'#b3b3b3'
     },
     search:{
         width:200,
@@ -116,7 +118,8 @@ const styles = StyleSheet.create({
     contentHeading:{
         color:'black',
         fontSize:30,
-        fontWeight:'bold'
+        fontWeight:'bold',
+        alignSelf:'center'
     },
     name:{
         fontSize: 20,

@@ -39,7 +39,6 @@ export default function UpdateStaff({route, navigation}){
                     setLoading(false);
                 })
                 .catch(err=>{
-                    //console.log(err);
                     setLoading(false);
                 })
 
@@ -154,7 +153,11 @@ const styles = StyleSheet.create({
         borderBottomWidth:1,
         marginBottom:5,
         width: 300,
-        fontSize:18
+        fontSize:18,
+        padding:10,
+        borderTopLeftRadius:5,
+        borderTopRightRadius:5,
+        backgroundColor:'#cccccc'
     },
     button:{
         backgroundColor:'#009999',

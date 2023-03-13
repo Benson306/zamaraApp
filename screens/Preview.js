@@ -41,13 +41,13 @@ export default function Preview({route, navigation}) {
 
         <View style={{marginTop:40, flexDirection:'row', justifyContent:'space-around'}}>
             <TouchableOpacity 
-                style={{backgroundColor:'#009999', padding: 10, borderRadius:8, width:80, alignItems:'center'}} 
+                style={{borderWidth:2,borderColor:'#009999' , padding: 8, borderRadius:8, width:100, alignItems:'center'}} 
                 onPress={() => navigation.navigate('Update', route.params)}
             >
-                <Text style={{color:'white', fontSize: 16}}>Edit</Text>
+                <Text style={{color:'#009999', fontSize: 16}}>Edit</Text>
             </TouchableOpacity>
             <TouchableOpacity 
-                style={{backgroundColor:'red', padding: 10, borderRadius:8, width:80, alignItems:'center'}} 
+                style={{backgroundColor:'#b30000', padding: 10, borderRadius:8, width:100, alignItems:'center'}} 
                 onPress={()=>handleDelete()}
             >
                 <Text style={{color:'white', fontSize: 16}}>Delete</Text>
@@ -59,6 +59,7 @@ export default function Preview({route, navigation}) {
 
 const styles = StyleSheet.create({
     container:{
+        flex:1,
         padding: 30
     },
     topic: {
@@ -67,10 +68,11 @@ const styles = StyleSheet.create({
         fontWeight:'bold'
     },
     heading:{
-        fontSize: 20,
+        fontSize: 19,
         padding: 10,
         marginTop:5,
-        color:'#009999'
+        color:'#009999',
+        fontWeight:'bold'
     },
     body:{
         fontSize:18,
