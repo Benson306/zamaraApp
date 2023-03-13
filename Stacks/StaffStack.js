@@ -13,6 +13,7 @@ export default function StaffStack(){
                 component={Staff} 
                 options={{headerShown: false}}
                 />
+                
       </Stack.Navigator> 
     )
 }
