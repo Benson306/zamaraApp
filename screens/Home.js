@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Text,Button,ActivityIndicator, StyleSheet } from 'react-native';
+import { View, Text,Button,ActivityIndicator, StyleSheet, Image } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
 export default function Home({navigation}){
@@ -33,8 +33,10 @@ export default function Home({navigation}){
                 data != null ?
                 <View>
                     <View style={styles.home}>
+                        
+                        <Image source={{uri: data.image}} style={{width:100, height:100, alignSelf:'center'}}/>
                         <Text style={styles.welcome}>
-                            Welcome, {data.firstName} {data.lastName}
+                            Welcome, <Text style={{color:'yellow'}}>{data.firstName} {data.lastName}</Text>
                         </Text>
                         <Text style={styles.text}>
                             Your profile details is as below:
@@ -133,12 +135,13 @@ const styles = StyleSheet.create({
     home:{
         justifyContent:'space-between',
         backgroundColor:'#009999',
-        padding:30
+        padding:20
     },
     welcome: {
         fontSize: 22,
         color:'white',
-        alignSelf:'center'
+        alignSelf:'center',
+        marginTop:15
     },
     text:{
         marginTop:20,

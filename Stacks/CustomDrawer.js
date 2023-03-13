@@ -5,12 +5,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AuthContext } from '../context/AuthContext';
 
 const CustomSidebarMenu = (props) => {
-  const {logout} = useContext(AuthContext);
+  const {logout, userData} = useContext(AuthContext);
+
   return (
     <SafeAreaView style={{flex: 1}}>
       {/*Top Large Image */}
       <Image
-        source={require('../assets/logo.png')}
+        source={{uri: userData.image}}
         style={styles.sideMenuProfileIcon}
       />
 
