@@ -45,10 +45,10 @@ export default Continent = () =>{
           const continents = newResponse["soap:Envelope"]["soap:Body"]["m:ListOfContinentsByNameResponse"]["m:ListOfContinentsByNameResult"]["m:tContinent"];
 
           const obj = continents.map(continent => {
-              let countryCode = continent["m:sCode"]._text 
-              let countryName = continent["m:sName"]._text
+              let continentCode = continent["m:sCode"]._text 
+              let continentName = continent["m:sName"]._text
 
-              return { countryCode, countryName }
+              return { continentCode, continentName }
             })
 
             setCountries(obj);
@@ -69,13 +69,13 @@ return(
       <Text>Loading ...</Text>
       : 
       
-      <View style={{padding: 40}}>
+      <View style={{padding: 20}}>
         {
           countries.map(country =>(
             <View style={{marginBottom:10}}>
               <Card>
-                <Text style={{fontWeight:'bold', fontSize:18}} key={1}>{country.countryName}</Text>
-                <Text>{country.countryCode}</Text>
+                <Text style={{fontWeight:'bold', fontSize:18}} key={1}>{country.continentName}</Text>
+                <Text>{country.continentCode}</Text>
               </Card>
           </View>
           ))
