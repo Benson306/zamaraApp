@@ -16,13 +16,10 @@ import SendMail from "../utility/SendMail";
 export default function AddStaff({navigation}){
         const [loading, setLoading] = useState(false);
 
-        SendMail('delete', 'bnkimtai@gmail.com', 'Ben');
-
         const handleSubmit = (values, actions) =>{
                 setLoading(true);
 
                 let data = JSON.stringify(values); 
-            
             
 
             fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara', {
@@ -34,6 +31,8 @@ export default function AddStaff({navigation}){
                 .then((res) => {
                     Alert.alert('Success','Staff Added', [
                         {text:'okay', onPress: () =>{
+                            //console.log(values.staffEmail)
+                            SendMail('create', values.staffEmail, values.staffName);
                             navigation.navigate('Staff');
                         }}
                     ])
