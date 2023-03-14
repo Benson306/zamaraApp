@@ -1,4 +1,5 @@
 import React from 'react'
+import Ngrok from './Ngrok';
 
 export default function SendMail(action, to, staffName) {
     let subject = '';
@@ -17,8 +18,10 @@ export default function SendMail(action, to, staffName) {
 
     let data = { to , subject, body }
 
+    let url = Ngrok();
 
-    fetch('https://61a0-105-29-165-73.ngrok.io/',{
+
+    fetch(url,{
         method: 'POST',
         headers: {
             "Content-Type":'application/json'

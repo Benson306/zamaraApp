@@ -2,9 +2,12 @@ import React from 'react'
 import { View, Text, StyleSheet, Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import SendMail from '../utility/SendMail';
+import StaffUrl from '../utility/StaffUrl';
 
 export default function Preview({route, navigation}) {
     const { _id, staffNumber, staffName, staffEmail, department , salary } = route.params;
+
+    let url = StaffUrl();
 
     const handleDelete = () => {
 
@@ -15,7 +18,7 @@ export default function Preview({route, navigation}) {
               style: 'cancel',
             },
             {text: 'OK', onPress: () => {
-                fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara/'+_id,{
+                fetch(url+_id,{
                     method: 'DELETE'
                 }).then(()=>{
                     SendMail('delete', staffEmail, staffName);

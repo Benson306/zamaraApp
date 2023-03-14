@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } from "react-native";
 import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Card from "../utility/Card";
+import StaffUrl from "../utility/StaffUrl";
 
 
 export default function Staff({navigation}){
@@ -11,9 +12,11 @@ export default function Staff({navigation}){
 
         const [data, setData] = useState([]);
 
+        let url = StaffUrl();
+
         useFocusEffect(
             React.useCallback(() => {
-                fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara')
+                fetch(url)
                 .then(res => res.json())
                 .then((res) => {
                     setData(res)

@@ -4,6 +4,7 @@ import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } 
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import * as yup from 'yup';
 import SendMail from "../utility/SendMail";
+import StaffUrl from "../utility/StaffUrl";
 
     export const staffSchema = yup.object({
         staffNumber: yup.string().required().min(3),
@@ -18,13 +19,15 @@ export default function UpdateStaff({route, navigation}){
 
         const [loading, setLoading] = useState(false);
 
+        let url = StaffUrl();
+
         const handleSubmit = (values, actions) =>{
                 setLoading(true);
 
                 let data = JSON.stringify(values); 
 
 
-            fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara/'+_id, {
+            fetch(url+_id, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: data
