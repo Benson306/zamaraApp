@@ -6,7 +6,6 @@ import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-han
 import Card from "../utility/Card";
 
 
-
 export default function Staff({navigation}){
         const [loading, setLoading] = useState(false);
 
@@ -14,7 +13,7 @@ export default function Staff({navigation}){
 
         useFocusEffect(
             React.useCallback(() => {
-                fetch('https://crudcrud.com/api/15fafef46fa247c7b0ee6160b32fc394/zamara')
+                fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara')
                 .then(res => res.json())
                 .then((res) => {
                     setData(res)

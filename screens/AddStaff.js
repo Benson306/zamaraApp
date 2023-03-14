@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import * as yup from 'yup';
+import SendMail from "../utility/SendMail";
 
     export const staffSchema = yup.object({
         staffNumber: yup.string().required().min(3),
@@ -15,13 +16,16 @@ import * as yup from 'yup';
 export default function AddStaff({navigation}){
         const [loading, setLoading] = useState(false);
 
+        SendMail('delete', 'bnkimtai@gmail.com', 'Ben');
+
         const handleSubmit = (values, actions) =>{
                 setLoading(true);
 
                 let data = JSON.stringify(values); 
+            
+            
 
-
-            fetch('https://crudcrud.com/api/15fafef46fa247c7b0ee6160b32fc394/zamara', {
+            fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: data

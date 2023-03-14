@@ -14,7 +14,7 @@ export default function Preview({route, navigation}) {
               style: 'cancel',
             },
             {text: 'OK', onPress: () => {
-                fetch('https://crudcrud.com/api/15fafef46fa247c7b0ee6160b32fc394/zamara/'+_id,{
+                fetch('https://crudcrud.com/api/5f5afa596da24a139691f98772e87c6e/zamara/'+_id,{
                     method: 'DELETE'
                 }).then(()=>{
                     navigation.navigate('Staff')
