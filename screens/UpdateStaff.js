@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import * as yup from 'yup';
+import SendMail from "../utility/SendMail";
 
     export const staffSchema = yup.object({
         staffNumber: yup.string().required().min(3),
@@ -31,6 +32,7 @@ export default function UpdateStaff({route, navigation}){
                 .then(() => {
                     Alert.alert('Success','Staff Updated', [
                         {text:'okay', onPress: () =>{
+                            SendMail('edit', values.staffEmail, values.staffName)
                             navigation.navigate('Staff');
                         }}
                     ])
