@@ -5,7 +5,6 @@ import CustomSidebarMenu from "./CustomDrawer";
 import HomeStack from "./HomeStack";
 import StaffStack from "./StaffStack";
 
-
 const Drawer = createDrawerNavigator();
 
 export default function DrawerStack(){

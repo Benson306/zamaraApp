@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { View, Text,Button, ActivityIndicator, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { View, Text,Button, ActivityIndicator, StyleSheet, Image } from 'react-native';
 import { AuthContext } from '../context/AuthContext';
 
 export default function Home({navigation}){
-
-
 
     const {userData} = useContext(AuthContext);
     const [loading, setLoading] = useState(true);
@@ -43,7 +41,7 @@ export default function Home({navigation}){
                         </Text>
                         
                     </View>
-                    {/* <TouchableOpacity onPress={SendMail}><Text>Send</Text></TouchableOpacity> */}
+
                     <View style={styles.wrapper}>
                         <Text style={styles.text}>
                             Your profile details is as below:
@@ -126,7 +124,7 @@ export default function Home({navigation}){
                     </View>
                 </View>
                 : 
-                <Text>
+                <Text style={{alignSelf:'center', fontSize:18, fontWeight:'bold'}}>
                     Failed to Fetch Data
                 </Text>
 

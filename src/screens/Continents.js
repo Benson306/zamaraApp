@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View,Text, ActivityIndicator } from 'react-native';
 import { xml2json } from 'xml-js';
-import Card from '../utility/Card';
+import Card from '../utils/Card';
 
 export default Continent = () =>{
       const [countries, setCountries] = useState([]);

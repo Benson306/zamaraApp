@@ -3,13 +3,13 @@ import React, { useState } from "react";
 import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import * as yup from 'yup';
-import SendMail from "../utility/SendMail";
-import StaffUrl from "../utility/StaffUrl";
+import SendMail from "../utils/SendMail";
+import StaffUrl from "../utils/StaffUrl";
 
     export const staffSchema = yup.object({
         staffNumber: yup.string().required().min(3),
         staffName: yup.string().required().min(3),
-        staffEmail: yup.string().required().min(3),
+        staffEmail: yup.string().email().required().min(3),
         department: yup.string().required().min(1),
         salary: yup.string().required().min(1)
     })

@@ -3,8 +3,8 @@ import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } from "react-native";
 import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
-import Card from "../utility/Card";
-import StaffUrl from "../utility/StaffUrl";
+import Card from "../utils/Card";
+import StaffUrl from "../utils/StaffUrl";
 
 
 export default function Staff({navigation}){
@@ -79,8 +79,6 @@ export default function Staff({navigation}){
 
                 </View>
                 
-                          
-
         </View>
         
     )

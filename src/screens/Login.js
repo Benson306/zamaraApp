@@ -4,7 +4,7 @@ import { Text, View , TextInput, Image, TouchableOpacity, TouchableWithoutFeedba
 import Styles from "../styles/Styles";
 import * as yup from 'yup'
 import { AuthContext } from "../context/AuthContext";
-import { useTogglePasswordVisibility } from "../utility/UseTogglePasswordVisibility";
+import { useTogglePasswordVisibility } from "../utils/UseTogglePasswordVisibility";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
@@ -56,7 +56,7 @@ export default Login = ({ navigation }) =>{
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <ScrollView automaticallyAdjustKeyboardInsets={true} showsVerticalScrollIndicator={false} >
                 <View style={Styles.login}>
-                    <Image source={require('../assets/logo.png')} styles={Styles.logo}/>
+                    <Image source={require('../../assets/logo.png')} styles={Styles.logo}/>
                     <Text style={Styles.brand}>Zamara App</Text>
                     <ScrollView automaticallyAdjustKeyboardInsets={true} showsVerticalScrollIndicator={false}>
                     {
