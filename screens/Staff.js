@@ -16,6 +16,7 @@ export default function Staff({navigation}){
 
         useFocusEffect(
             React.useCallback(() => {
+                setLoading(true)
                 fetch(url)
                 .then(res => res.json())
                 .then((res) => {
@@ -49,7 +50,7 @@ export default function Staff({navigation}){
                 {
                 loading ? 
                 
-                <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+                <View style={{marginTop:20,justifyContent:'center', alignItems:'center'}}>
                     <ActivityIndicator size='large'  color="#009999"/>
                 </View> 
                 

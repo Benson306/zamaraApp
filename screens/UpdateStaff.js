@@ -21,7 +21,7 @@ export default function UpdateStaff({route, navigation}){
 
         let url = StaffUrl();
 
-        const handleSubmit = (values, actions) =>{
+        const handleSubmit = (values) =>{
                 setLoading(true);
 
                 let data = JSON.stringify(values); 
@@ -128,7 +128,14 @@ export default function UpdateStaff({route, navigation}){
 
 
                                 <TouchableOpacity style={styles.button} onPress={props.handleSubmit}>
-                                    <Text style={styles.buttonText}>Update</Text>
+                                   {
+                                    !loading ?
+                                        <Text style={styles.buttonText}>Update</Text>
+                                    :
+                                    <View style={{justifyContent:'center', alignItems:'center', marginTop:0 }}>
+                                        <ActivityIndicator size='small'  color="white"/>
+                                    </View> 
+                                   }
                                 </TouchableOpacity>
                             </View>
                         )}

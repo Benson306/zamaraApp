@@ -26,11 +26,11 @@ export default function Home({navigation}){
     },[])
 
     return (
-        <View style={{backgroundColor:'#009999'}}>
+        <View style={{backgroundColor:'#009999', flex:1}}>
             {
                 loading ? 
                 <View style={{flex:1, justifyContent:'center', alignItems:'center', marginTop:30 }}>
-                    <ActivityIndicator size='large'  color="#009999"/>
+                    <ActivityIndicator size='large'  color="white"/>
                 </View> 
                 :
                 data != null ?

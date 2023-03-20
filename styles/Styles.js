@@ -12,7 +12,8 @@ const Styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        height: '100%'
+        height: '100%',
+        marginTop:150
     },
     logo:{
         alignSelf:'center'

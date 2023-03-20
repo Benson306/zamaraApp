@@ -66,15 +66,15 @@ return(
   <View>
     {
       loading ? 
-      <View style={{flex:1, justifyContent:'center', alignItems:'center', marginTop:30 }}>
-                    <ActivityIndicator size='large'  color="#009999"/>
-      </View> 
+            <View style={{flex:1, justifyContent:'center', alignItems:'center', marginTop:30 }}>
+                <ActivityIndicator size='large'  color="#009999"/>
+            </View> 
       : 
       
       <View style={{padding: 20}}>
         {
           countries.map(country =>(
-            <View style={{marginBottom:10}}>
+            <View style={{marginBottom:10}} key={country.continentCode}>
               <Card>
                 <Text style={{fontWeight:'bold', fontSize:18}} key={1}>{country.continentName}</Text>
                 <Text>{country.continentCode}</Text>
