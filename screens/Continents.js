@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View,Text } from 'react-native';
+import { View,Text, ActivityIndicator } from 'react-native';
 import { xml2json } from 'xml-js';
 import Card from '../utility/Card';
 
@@ -66,7 +66,9 @@ return(
   <View>
     {
       loading ? 
-      <Text>Loading ...</Text>
+      <View style={{flex:1, justifyContent:'center', alignItems:'center', marginTop:30 }}>
+                    <ActivityIndicator size='large'  color="#009999"/>
+      </View> 
       : 
       
       <View style={{padding: 20}}>

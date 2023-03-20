@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useState } from "react";
-import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator } from "react-native";
+import { Text, View, TextInput,StyleSheet, Keyboard, Alert, ActivityIndicator, ScrollView } from "react-native";
 import { TouchableOpacity, TouchableWithoutFeedback } from "react-native-gesture-handler";
 import * as yup from 'yup';
 import SendMail from "../utility/SendMail";
@@ -57,6 +57,7 @@ export default function AddStaff({navigation}){
             
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View>
+                    <ScrollView automaticallyAdjustKeyboardInsets={true} showsVerticalScrollIndicator={false}>
                     <Formik 
                         initialValues={{staffNumber: '', staffName:'', staffEmail:'', department:'', salary:''}}
                         validationSchema={staffSchema}   
@@ -134,6 +135,7 @@ export default function AddStaff({navigation}){
                             
 
                     </Formik>
+                    </ScrollView>
                 </View>
                 </TouchableWithoutFeedback>
             :

@@ -1,6 +1,6 @@
 import { Formik } from "formik";
 import React, { useContext } from "react";
-import { Text, View , TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert, Pressable } from 'react-native'
+import { Text, View , TextInput, Image, TouchableOpacity, TouchableWithoutFeedback, Keyboard, Alert, Pressable, ScrollView } from 'react-native'
 import Styles from "../styles/Styles";
 import * as yup from 'yup'
 import { AuthContext } from "../context/AuthContext";
@@ -53,7 +53,7 @@ export default Login = ({ navigation }) =>{
             <View style={Styles.login}>
                 <Image source={require('../assets/logo.png')} styles={Styles.logo}/>
                 <Text style={Styles.brand}>Zamara App</Text>
-                
+                <ScrollView automaticallyAdjustKeyboardInsets={true} showsVerticalScrollIndicator={false}>
                 <Formik
                     initialValues={{username:'', password:''}}
                     validationSchema={loginSchema}
@@ -100,6 +100,7 @@ export default Login = ({ navigation }) =>{
                     </View>
                 )}  
                 </Formik>
+                </ScrollView>
                 
             </View>
             </TouchableWithoutFeedback>
